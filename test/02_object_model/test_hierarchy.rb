@@ -78,6 +78,7 @@ class TestHierarchy < MiniTest::Test
   end
 
   def test_c6_name
+    binding.irb
     assert_equal "Refined M1", C6.new.name
   end
 end
