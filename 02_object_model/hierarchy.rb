@@ -86,7 +86,7 @@ class C4
   end
 
   def increment
-    self.value = self.value.succ
+    self.value = self.value.next
     self.value.to_s
   end
 
