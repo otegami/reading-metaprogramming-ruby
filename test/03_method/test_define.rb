@@ -75,45 +75,45 @@ class TestDefine < MiniTest::Test
     assert_equal true, @called_dev_team
   end
 
-  # def test_answer_a3_define
-  #   assert_equal true, A3.methods.include?(:my_attr_accessor)
-  # end
+  def test_answer_a3_define
+    assert_equal true, A3.methods.include?(:my_attr_accessor)
+  end
 
-  # def test_answer_a3_string
-  #   instance = A3.new
-  #   instance.hoge = "1"
+  def test_answer_a3_string
+    instance = A3.new
+    instance.hoge = "1"
 
-  #   assert_equal false, instance.methods.include?(:hoge?)
-  #   assert_equal "1", instance.hoge
-  # end
+    assert_equal false, instance.methods.include?(:hoge?)
+    assert_equal "1", instance.hoge
+  end
 
-  # def test_answer_a3_number
-  #   instance = A3.new
-  #   instance.hoge = 1
+  def test_answer_a3_number
+    instance = A3.new
+    instance.hoge = 1
 
-  #   assert_equal false, instance.methods.include?(:hoge?)
-  #   assert_equal 1, instance.hoge
-  # end
+    assert_equal false, instance.methods.include?(:hoge?)
+    assert_equal 1, instance.hoge
+  end
 
-  # def test_answer_a3_array
-  #   instance = A3.new
-  #   instance.hoge = [1, 2]
+  def test_answer_a3_array
+    instance = A3.new
+    instance.hoge = [1, 2]
 
-  #   assert_equal false, instance.methods.include?(:hoge?)
-  #   assert_equal [1, 2], instance.hoge
-  # end
+    assert_equal false, instance.methods.include?(:hoge?)
+    assert_equal [1, 2], instance.hoge
+  end
 
-  # def test_answer_a3_boolean_true
-  #   instance = A3.new
-  #   instance.hoge = true
-  #   assert_equal true, instance.methods.include?(:hoge?)
-  #   assert_equal true, instance.hoge?
-  # end
+  def test_answer_a3_boolean_true
+    instance = A3.new
+    instance.hoge = true
+    assert_equal true, instance.methods.include?(:hoge?)
+    assert_equal true, instance.hoge?
+  end
 
-  # def test_answer_a3_boolean_false
-  #   instance = A3.new
-  #   instance.hoge = false
-  #   assert_equal true, instance.methods.include?(:hoge?)
-  #   assert_equal false, instance.hoge?
-  # end
+  def test_answer_a3_boolean_false
+    instance = A3.new
+    instance.hoge = false
+    assert_equal true, instance.methods.include?(:hoge?)
+    assert_equal false, instance.hoge?
+  end
 end
