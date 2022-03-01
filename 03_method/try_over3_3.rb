@@ -65,6 +65,9 @@ module TryOver3
               @attr == true
             end
           end
+          if respond_to?("#{attr_sym}?") && [true, false].none?(value)
+            self.class.remove_method("#{attr_sym}?")
+          end
           @attr = value
         end
       end
@@ -78,6 +81,29 @@ module TryOver3
   # TryOver3::A4::Hoge.run
   # # => "run Hoge"
 
+  class A4
+    class << self
+      def runners
+        @const_array
+      end
+
+      def runners= const_array
+        @const_array = const_array
+      end
+
+      def const_missing(name)
+        super unless @const_array.include?(name)
+
+        klass_instance = Class.new do |klass|
+          klass.define_singleton_method :run do
+            "run #{name}"
+          end
+        end
+
+        const_set(name, klass_instance)
+      end
+    end
+  end
 
   # Q5. チャレンジ問題！ 挑戦する方はテストの skip を外して挑戦してみてください。
   #

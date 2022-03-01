@@ -47,38 +47,38 @@ class TestTryOver03Q1 < Minitest::Test
     refute_includes TryOver3::A2Proxy.new(source).methods, :foo
   end
 
-  # def test_q3_original_accessor_boolean_method
-  #   instance = orignal_accessor_included_instance
-  #   instance.hoge = true
-  #   assert_equal(true, instance.hoge?)
-  #   instance.hoge = "hoge"
-  #   assert_raises(NoMethodError) { instance.hoge? }
-  #   refute_includes(instance.methods, :hoge?)
-  # end
+  def test_q3_original_accessor_boolean_method
+    instance = orignal_accessor_included_instance
+    instance.hoge = true
+    assert_equal(true, instance.hoge?)
+    instance.hoge = "hoge"
+    assert_raises(NoMethodError) { instance.hoge? }
+    refute_includes(instance.methods, :hoge?)
+  end
 
-  # def test_q3_original_accessor_boolean_method_reverse
-  #   instance = orignal_accessor_included_instance
-  #   instance.hoge = "hoge"
-  #   assert_raises(NoMethodError) { instance.hoge? }
-  #   refute_includes(instance.methods, :hoge?)
-  #   instance.hoge = true
-  #   assert_equal(true, instance.hoge?)
-  # end
+  def test_q3_original_accessor_boolean_method_reverse
+    instance = orignal_accessor_included_instance
+    instance.hoge = "hoge"
+    assert_raises(NoMethodError) { instance.hoge? }
+    refute_includes(instance.methods, :hoge?)
+    instance.hoge = true
+    assert_equal(true, instance.hoge?)
+  end
 
-  # def test_q4_call_class
-  #   TryOver3::A4.runners = [:Hoge]
-  #   assert_equal "run Hoge", TryOver3::A4::Hoge.run
-  # end
+  def test_q4_call_class
+    TryOver3::A4.runners = [:Hoge]
+    assert_equal "run Hoge", TryOver3::A4::Hoge.run
+  end
 
-  # def test_q4_raise_error_when_called_not_runner_class
-  #   TryOver3::A4.runners = [:Hoge]
-  #   assert_raises(NameError) { TryOver3::A4::Foo }
-  # end
+  def test_q4_raise_error_when_called_not_runner_class
+    TryOver3::A4.runners = [:Hoge]
+    assert_raises(NameError) { TryOver3::A4::Foo }
+  end
 
-  # def test_q4_not_exists_runner_class
-  #   TryOver3::A4.runners = [:Hoge]
-  #   refute_includes(TryOver3::A4.constants, :Hoge)
-  # end
+  def test_q4_not_exists_runner_class
+    TryOver3::A4.runners = [:Hoge]
+    refute_includes(TryOver3::A4.constants, :Hoge)
+  end
 
   # def test_q5_task_helper_call_method
   #   skip
