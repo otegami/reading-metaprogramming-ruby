@@ -100,7 +100,7 @@ module TryOver3
           end
         end
 
-        const_set(name, klass_instance)
+        klass_instance
       end
     end
   end
