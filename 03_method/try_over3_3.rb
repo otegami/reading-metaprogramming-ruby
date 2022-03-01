@@ -12,12 +12,12 @@ module TryOver3
       nil
     end
 
-    def method_missing(method_name, *args)
+    def method_missing(method_name, **args)
       return super unless method_name.start_with?(TEST_METHOD_PREFIX)
       run_test
     end
 
-    def respond_to_missing?
+    def respond_to_missing?(method_name, include_private = false)
       return super unless method_name.start_with?(TEST_METHOD_PREFIX)
       true
     end
@@ -39,14 +39,12 @@ module TryOver3
       @source = source
     end
 
-    def method_missing(name, **args)
-      return super unless @source.respond_to?(:name)
-      @source.public_send(:name, args)
+    def method_missing(name, *args)
+      args.any? ? @source.public_send(name, args[0]) : @source.public_send(name)
     end
 
     def respond_to_missing?(name, include_private = false)
-      return super unless @source.respond_to?(:name)
-      true
+      @source.respond_to?(name)
     end
   end
 
