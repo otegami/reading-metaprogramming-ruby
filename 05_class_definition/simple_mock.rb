@@ -37,3 +37,39 @@
 # obj.imitated_method #=> true
 # obj.called_times(:imitated_method) #=> 2
 # ```
+
+module SimpleMock
+  INITIAL_HISTORY_COUNT = 0
+  INCREMENTED_HISTORY_AMOUNT = 1
+
+  def expects(method_name, return_value)
+    define_singleton_method(method_name, ->{ return_value })
+  end
+
+  def watch(method_name)
+    return_value = public_send(method_name)
+    watch_histories[method_name] = INITIAL_HISTORY_COUNT
+
+    define_singleton_method(method_name) do
+      watch_histories[method_name] += INCREMENTED_HISTORY_AMOUNT
+      return_value
+    end
+  end
+
+  def called_times(method_name)
+    watch_histories[method_name]
+  end
+
+  def watch_histories
+    @hisotries ||= {}
+  end
+
+  def self.new
+    obj = Object.new
+    obj.extend(SimpleMock)
+  end
+
+  def self.mock(obj)
+    obj.extend(SimpleMock)
+  end
+end
